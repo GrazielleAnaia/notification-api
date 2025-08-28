@@ -4,7 +4,6 @@ package com.grazielleanaia.notification_api.business;
 import com.grazielleanaia.notification_api.business.dto.TaskDTO;
 import com.grazielleanaia.notification_api.infrastructure.exception.EmailException;
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
