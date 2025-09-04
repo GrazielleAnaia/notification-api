@@ -1,11 +1,18 @@
-FROM openjdk:17-jdk-alpine
+FROM gradle:8.7-jdk17-alpine AS build
 
 WORKDIR /app
 
-COPY build/libs/notification-api-0.0.1-SNAPSHOT.jar /app/notification-api.jar
+COPY . .
 
+RUN gradle build --no-daemon
+
+
+FROM amazoncorretto:17-alpine3.19-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/build/libs/*.jar /app/notification-api.jar
 EXPOSE 8182
-
 CMD ["java", "-jar", "/app/notification-api.jar"]
 
 
